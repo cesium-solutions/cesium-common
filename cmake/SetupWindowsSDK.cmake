@@ -1,0 +1,11 @@
+if ( NOT WINDOWSSDK_FOUND )
+  if ( WIN32 )
+    find_package( WindowsSDK )
+    if ( ${CMAKE_CL_64} )
+      set ( CMAKE_LIBRARY_PATH "${WINDOWSSDK_PREFERRED_DIR}/lib/x64" )
+    else()
+      set ( CMAKE_LIBRARY_PATH "${WINDOWSSDK_PREFERRED_DIR}/lib/x64" )
+    endif()
+    add_definitions( -DWIN32 -D_WINDOWS ) # Qt5 is screwing this up somehow
+  endif()
+endif()
